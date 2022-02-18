@@ -8,7 +8,7 @@
         _go 1 1
         
 let fibonacci n =
-    if n < 1 then failwith "Number must be positive"
+    if n  1 then failwith "Number must be positive"
     else
         let rec _go x acc1 acc2 =
             if x = n then acc1
