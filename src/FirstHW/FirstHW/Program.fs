@@ -37,6 +37,7 @@ let reverse list =
 /// Gets numbers n and m. Returns [2^n; 2^(n + 1); ...; 2^(n + m)] list
 /// </summary>   
 let fourthTask n m =
+    if n < 0 || m < 0 then raise (ArgumentException("n and m bust be non-negative"))
     let rec _go current list =
         if current = m then list
         else _go (current + 1) ((list |> List.head |> (*) 2) :: list)
@@ -54,3 +55,4 @@ let find list element =
             else _go tail (currentPosition + 1)
         | [] -> raise (ArgumentException("Element is not in the list"))
     _go list 0
+    
