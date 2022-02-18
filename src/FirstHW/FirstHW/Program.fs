@@ -1,4 +1,5 @@
-﻿open System
+﻿module FirstHW
+open System
 
 /// <summary>
 /// Calculates the factorial of a number
