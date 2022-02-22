@@ -1,59 +1,49 @@
 ﻿module FirstHW
 open System
 
-/// <summary>
 /// Calculates the factorial of a number
-/// </summary>
 let factorial x =
     if x < 0 then raise (ArgumentException("Number mustn't be negative"))
     if x = 0 then 1
     else
-        let rec _go current acc = 
+        let rec factorialInternal current acc = 
             if x = current then acc * current
-            else _go (current + 1) (acc * current)
-        _go 1 1
+            else factorialInternal (current + 1) (acc * current)
+        factorialInternal 1 1
 
-/// <summary>
-/// Calculates the nth fibonacci number
-/// </summary>        
+/// Calculates the nth fibonacci number    
 let fibonacci n =
-    if n < 1 then raise (ArgumentException("Number must be positive"))
-    else
-        let rec _go current acc1 acc2 =
+    if n < 1 then raise (ArgumentException("Number must be positive")) else       
+        let rec fibonacciInternal current acc1 acc2 =
             if current = n then acc1
-            else _go (current + 1) acc2 (acc1 + acc2)
-        _go 1 0 1
+            else fibonacciInternal (current + 1) acc2 (acc1 + acc2)
+        fibonacciInternal 1 0 1
 
-/// <summary>
-/// Reverses list
-/// </summary>           
+/// Reverses list        
 let reverse list = 
-    let rec _go lst acc =
+    let rec reverseInternal lst acc =
         match lst with
-        | head :: tail -> _go tail (head :: acc)
+        | head :: tail -> reverseInternal tail (head :: acc)
         | [] -> acc
-    _go list []
+    reverseInternal list []
 
-/// <summary>
-/// Gets numbers n and m. Returns [2^n; 2^(n + 1); ...; 2^(n + m)] list
-/// </summary>   
+/// Gets numbers n and m. Returns [2^n; 2^(n + 1); ...; 2^(n + m)] list 
 let fourthTask n m =
-    if n < 0 || m < 0 then raise (ArgumentException("n and m bust be non-negative"))
-    let rec _go current list =
+    if n < 0 || m < 0 then raise (ArgumentException("n and m must be non-negative"))
+    let rec helper current list =
         if current = m then list
-        else _go (current + 1) ((list |> List.head |> (*) 2) :: list)
-    _go 0 [pown 2 n] |> List.rev
+        else helper (current + 1) ((list |> List.head |> (*) 2) :: list)
+    helper 0 [pown 2 n] |> List.rev
 
-/// <summary>
 /// Finds and returns the first occurrence of a number.
-/// Raises exception if the element is not in the list
-/// </summary>   
+/// Raises exception if the element is not in the list 
 let find list element =
-    let rec _go list currentPosition =
+    let rec findInternal list currentPosition =
         match list with
         | head :: tail ->
             if head = element then currentPosition
-            else _go tail (currentPosition + 1)
+            else findInternal tail (currentPosition + 1)
         | [] -> raise (ArgumentException("Element is not in the list"))
-    _go list 0
+    findInternal list 0
+
     
