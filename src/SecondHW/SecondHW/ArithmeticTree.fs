@@ -1,15 +1,18 @@
 module SecondHW.ArithmeticTree
 
+/// Simple arithmetic operations
 type Operation =
     | Sum
     | Subtraction
     | Multiply
     | Division
 
+/// Arithmetic expression parsing tree
 type ArithmeticTree<'t> =
     | Leaf of 't
     | Node of Operation * ArithmeticTree<'t> * ArithmeticTree<'t>
 
+/// Evaluates arithmetic expression represented by parsing tree
 let rec evaluate tree =
     match tree with
     | Leaf x -> x

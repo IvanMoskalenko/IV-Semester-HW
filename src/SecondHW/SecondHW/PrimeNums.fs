@@ -1,5 +1,6 @@
 module SecondHW.PrimeNums
 
+/// Generates infinite sequence of prime nums
 let primeNums =
     let rec helper item list =
         match list with
