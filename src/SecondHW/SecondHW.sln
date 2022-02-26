@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SecondHW", "SecondHW\SecondHW.fsproj", "{4677659D-88C1-4F66-9715-321B217EEBC4}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SecondHW.Tests", "SecondHW.Tests\SecondHW.Tests.fsproj", "{7A36DB68-5553-4641-A532-B86CA4202493}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4677659D-88C1-4F66-9715-321B217EEBC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4677659D-88C1-4F66-9715-321B217EEBC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4677659D-88C1-4F66-9715-321B217EEBC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4677659D-88C1-4F66-9715-321B217EEBC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A36DB68-5553-4641-A532-B86CA4202493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A36DB68-5553-4641-A532-B86CA4202493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A36DB68-5553-4641-A532-B86CA4202493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A36DB68-5553-4641-A532-B86CA4202493}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="NumberOfEvenNumbers.fs" />
+        <Compile Include="BinaryTree.fs" />
+        <Compile Include="ArithmeticTree.fs" />
+        <Compile Include="PrimeNums.fs" />
+    </ItemGroup>
+
+</Project>
