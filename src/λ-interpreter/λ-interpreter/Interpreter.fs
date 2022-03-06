@@ -1,3 +1,4 @@
+module Interpreter
 open System
 
 type Variable = string
