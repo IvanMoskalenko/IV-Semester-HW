@@ -57,3 +57,8 @@ let primeNumsTest () =
     let first10PrimeNums = [ for i in 0 .. 9 -> Seq.item i primeNums ]
 
     first10PrimeNums |> should equal [ 2; 3; 5; 7; 11; 13; 17; 19; 23; 29 ]
+    
+numberOfEvenNumbersTest ()
+mapTreeTest ()
+arithmeticTreeTest ()
+primeNumsTest ()
