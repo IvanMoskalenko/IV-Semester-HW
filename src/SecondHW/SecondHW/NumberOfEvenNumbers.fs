@@ -2,10 +2,9 @@ module SecondHW.NumberOfEvenNumbers
 
 /// Calculates number of even numbers using List.map
 let numberOfEvenNumbersMap list =
-    List.sum list
-    - (list
-       |> List.map (fun x -> if x % 2 = 0 then x - 1 else x)
-       |> List.sum)
+   list
+   |> List.map (fun x -> if x % 2 = 0 then 1 else 0)
+   |> List.sum
 
 /// Calculates number of even numbers using List.filter
 let numberOfEvenNumbersFilter list =
