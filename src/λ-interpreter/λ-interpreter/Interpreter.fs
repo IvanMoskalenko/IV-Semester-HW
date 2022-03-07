@@ -21,9 +21,7 @@ let rec freeVariables term =
     | LambdaAbstraction (x, term) -> Set.difference (freeVariables term) (x |> Variable |> freeVariables)
 
 let check var var1 term term1 =
-    if Set.contains var (freeVariables term1) then false
-    elif Set.contains var1 (freeVariables term) then false
-    else true
+    not ((Set.contains var (freeVariables term1)) || (Set.contains var1 (freeVariables term)))
 
 let rec substitution variable term1 term2 =
     match (term1, term2) with
