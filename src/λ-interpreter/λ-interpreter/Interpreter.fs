@@ -7,6 +7,7 @@ type Term =
     | Application of Term * Term
     | LambdaAbstraction of Variable * Term
 
+/// Gets new unused name
 let getNewName usedNames =
     let max: string = Set.maxElement usedNames
     let last = Seq.last max
@@ -14,16 +15,18 @@ let getNewName usedNames =
     | true -> max[0..max.Length - 2] + (last |> Char.GetNumericValue |> int |> (+) 1 |> string)
     | false -> max[0..max.Length - 1] + "0"
 
+/// Gets set of free variables
 let rec freeVariables term =
     match term with
     | Variable x -> Set.singleton x
     | Application (term, term1) -> Set.union (freeVariables term) (freeVariables term1)
     | LambdaAbstraction (x, term) -> Set.difference (freeVariables term) (x |> Variable |> freeVariables)
 
-let check var var1 term term1 =
-    not ((Set.contains var (freeVariables term1)) || (Set.contains var1 (freeVariables term)))
-
+/// Substitutes term
 let rec substitution variable term1 term2 =
+    let check var var1 term term1 =
+        not ((Set.contains var (freeVariables term1)) && (Set.contains var1 (freeVariables term)))
+        
     match (term1, term2) with
     | Variable var, _ when variable = var -> term2
     | Variable _, _ -> term1
@@ -37,7 +40,8 @@ let rec substitution variable term1 term2 =
         let x = newVar |> Variable |> substitution var term
         let newTerm = substitution variable x term2
         LambdaAbstraction (newVar, newTerm)
-        
+
+/// Beta reduction        
 let rec betaReduction term =
     match term with
     | Variable x -> Variable x

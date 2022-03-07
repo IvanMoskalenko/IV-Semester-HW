@@ -34,7 +34,7 @@ let simpleTest2 () =
 [<Test>]
 let testWithReplacement () =
     let value =
-        betaReduction (Application(LambdaAbstraction("x", LambdaAbstraction("z", Variable "x")), Variable "x"))
+        betaReduction (Application(LambdaAbstraction("a", LambdaAbstraction("x", Variable "a")), Variable "x"))
 
     value |> should equal (LambdaAbstraction ("x0", Variable "x"))    
         
