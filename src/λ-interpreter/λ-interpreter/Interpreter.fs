@@ -20,7 +20,6 @@ let rec freeVariables term =
     | Application (term, term1) -> Set.union (freeVariables term) (freeVariables term1)
     | LambdaAbstraction (x, term) -> Set.difference (freeVariables term) (x |> Variable |> freeVariables)
 
-
 let check var var1 term term1 =
     if Set.contains var (freeVariables term1) then false
     elif Set.contains var1 (freeVariables term) then false
@@ -40,7 +39,6 @@ let rec substitution variable term1 term2 =
         let x = newVar |> Variable |> substitution var term
         let newTerm = substitution variable x term2
         LambdaAbstraction (newVar, newTerm)
-
         
 let rec betaReduction term =
     match term with
@@ -53,6 +51,4 @@ let rec betaReduction term =
             (variable, term, rightTerm) |||> substitution |> betaReduction
         | _ -> Application (newLeft, betaReduction rightTerm)
     | LambdaAbstraction (variable, term) -> LambdaAbstraction (variable, betaReduction term)
-
-
-    
+   
