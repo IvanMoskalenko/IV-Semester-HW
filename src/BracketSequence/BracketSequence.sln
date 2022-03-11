@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BracketSequence", "BracketSequence\BracketSequence.fsproj", "{31845EF9-99B2-4434-962C-2026D2111162}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BracketSequence.Tests", "BracketSequence.Tests\BracketSequence.Tests.fsproj", "{C7E696B0-33E8-4558-A3E9-726618D62B01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{31845EF9-99B2-4434-962C-2026D2111162}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31845EF9-99B2-4434-962C-2026D2111162}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31845EF9-99B2-4434-962C-2026D2111162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7E696B0-33E8-4558-A3E9-726618D62B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7E696B0-33E8-4558-A3E9-726618D62B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7E696B0-33E8-4558-A3E9-726618D62B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7E696B0-33E8-4558-A3E9-726618D62B01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
