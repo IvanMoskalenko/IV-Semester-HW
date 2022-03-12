@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PhoneBook", "PhoneBook\PhoneBook.fsproj", "{3390BB9B-9044-47AA-BDE8-F16B47FB7798}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PhoneBook.Tests", "PhoneBook.Tests\PhoneBook.Tests.fsproj", "{1B21C984-6268-4926-817D-BD6FBAA8CD6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{3390BB9B-9044-47AA-BDE8-F16B47FB7798}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3390BB9B-9044-47AA-BDE8-F16B47FB7798}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3390BB9B-9044-47AA-BDE8-F16B47FB7798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B21C984-6268-4926-817D-BD6FBAA8CD6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B21C984-6268-4926-817D-BD6FBAA8CD6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B21C984-6268-4926-817D-BD6FBAA8CD6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B21C984-6268-4926-817D-BD6FBAA8CD6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

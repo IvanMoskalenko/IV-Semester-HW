@@ -51,12 +51,12 @@ let rec program book =
     printf "%s" "Please, enter command: "
     match Console.ReadLine() with
     | "1" -> ()
-    | "2" -> program (addRecord (getName ()) (getPhone ()) book)
+    | "2" -> ((getName ()), (getPhone ()), book) |||> addRecord |> program
     | "3" ->
-        List.iter (fun x -> printfn $"%d{x}") (findPhone (getName ()) book)
+        List.iter (printfn "%d") (findPhone (getName ()) book)
         program book
     | "4" ->
-        List.iter (fun x -> printfn $"%s{x}") (findName (getPhone ()) book)
+        List.iter (printfn "%s") (findName (getPhone ()) book)
         program book
     | "5" ->
         printBook book
