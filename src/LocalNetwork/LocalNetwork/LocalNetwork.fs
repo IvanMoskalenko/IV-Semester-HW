@@ -33,7 +33,7 @@ type Network(computers: Computer[], connections: Map<int, int>, ?randomizer) =
             adjacencyMatrix[s, f] <- true)
     member this.Computers = computers
     
-    /// Calculates system status after one step
+    /// Calculates network's status after one step
     member this.OneStep =
         isStable <- true
         let infect index viruses =
