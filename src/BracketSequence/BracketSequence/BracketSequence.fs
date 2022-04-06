@@ -7,17 +7,17 @@ let bracketSequenceChecker string =
         if bracket = '}' then '{'
         elif bracket = ')' then '('
         elif bracket = ']' then '['
-        else raise (ArgumentException ())
+        else raise (ArgumentException "Wrong symbol. Only `}`, `)` and `]` can be reversed")
         
-    let rec checkerInner tail brackets =
-        if (Seq.isEmpty tail) then (List.isEmpty brackets) else
-        match (Seq.head tail) with
-        | '(' | '{' | '[' as openingBracket -> checkerInner (Seq.tail tail) (openingBracket :: brackets)
+    let rec checkerInner sequence brackets =
+        if (Seq.isEmpty sequence) then (List.isEmpty brackets) else
+        match (Seq.head sequence) with
+        | '(' | '{' | '[' as openingBracket -> checkerInner (Seq.tail sequence) (openingBracket :: brackets)
         | ')' | '}' | ']' as closingBracket ->
             match brackets with
-            | bracket :: tl when bracket = (bracketReverse closingBracket) -> checkerInner (Seq.tail tail) tl
+            | bracket :: tl when bracket = (bracketReverse closingBracket) -> checkerInner (Seq.tail sequence) tl
             | _ -> false
-        | _ -> checkerInner (Seq.tail tail) brackets
+        | _ -> checkerInner (Seq.tail sequence) brackets
     
     checkerInner string []
     
