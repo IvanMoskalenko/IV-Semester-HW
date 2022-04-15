@@ -3,6 +3,7 @@ module MiniCrawler
 open System.Net.Http
 open System.Text.RegularExpressions
 
+/// Downloads page in HTML format
 let downloadPage (url: string) =
     async {
         try 
@@ -12,7 +13,8 @@ let downloadPage (url: string) =
         with
         | _ -> return None        
     }
-    
+
+/// Finds URLs in HTML    
 let findURLs html =
     let pattern1 = "<a href=\"https://\S+\">"
     let pattern2 = "https://\S+\""
@@ -23,6 +25,7 @@ let findURLs html =
             let url = Regex.Match(x.Value, pattern2).Value
             url[0 .. url.Length - 2])
 
+/// Finds the sizes of pages that are linked from a given URL
 let findSizes url =
     match url |> downloadPage |> Async.RunSynchronously with
     | Some content ->
@@ -39,6 +42,7 @@ let findSizes url =
         |> Seq.zip urls
     | _ -> Seq.empty
 
+/// Prints the sizes of pages in "URL — size" format
 let printSizes urlResTuples =
     Seq.iter
         (fun (url, res) ->
