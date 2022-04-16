@@ -2,7 +2,8 @@ module Lazy.ConcurrentLazy
 open System
 open ILazy
 
-type ConcurrentLazy<'t> (supplier: unit -> 't) =
+/// Concurrent implementation of ILazy
+type ConcurrentLazy<'t>(supplier: unit -> 't) =
     [<VolatileField>]
     let mutable instance = None
     let obj = Object ()
