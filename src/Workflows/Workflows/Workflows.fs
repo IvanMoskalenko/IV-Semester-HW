@@ -3,6 +3,7 @@ open System
 
 /// Workflow that performs arithmetic operations with accuracy given
 type RoundingBuilder(accuracy: int) =
+    static member rounding = RoundingBuilder
     member this.Bind(x: float, f) = f (Math.Round(x, accuracy))
     member this.Return(x: float) = Math.Round(x, accuracy)
 
