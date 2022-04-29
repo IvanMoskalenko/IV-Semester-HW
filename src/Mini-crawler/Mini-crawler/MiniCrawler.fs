@@ -4,43 +4,38 @@ open System.Net.Http
 open System.Text.RegularExpressions
 
 /// Downloads page in HTML format
-let downloadPage (url: string) =
-    async {
-        try 
-            use client = new HttpClient()
-            let! content = client.GetStringAsync(url) |> Async.AwaitTask
-            return Some content
-        with
-        | _ -> return None        
-    }
+let downloadPage (client: HttpClient) (url: string) =
+    client.GetStringAsync(url)
+    |> Async.AwaitTask
+    |> Async.Catch
 
-/// Finds URLs in HTML    
+/// Finds URLs in HTML
 let findURLs html =
-    let pattern1 = "<a href=\"https://\S+\">"
-    let pattern2 = "https://\S+\""
+    let urlPattern = "<a href=\"(https://\S+)\">"
+    let regex = Regex(urlPattern, RegexOptions.Compiled)
 
-    Regex.Matches(html, pattern1)
-    |> Seq.map
-        (fun x ->
-            let url = Regex.Match(x.Value, pattern2).Value
-            url[0 .. url.Length - 2])
+    regex.Matches(html)
+    |> Seq.map (fun x -> x.Groups[1].Value)
 
 /// Finds the sizes of pages that are linked from a given URL
 let findSizes url =
-    match url |> downloadPage |> Async.RunSynchronously with
-    | Some content ->
+    async {
+    let client = new HttpClient()
+    match (client, url) ||> downloadPage |> Async.RunSynchronously with
+    | Choice1Of2 content ->
         let urls = findURLs content
-        urls
-        |> Seq.map downloadPage
+        return (urls
+        |> Seq.map (downloadPage client)
         |> Async.Parallel
         |> Async.RunSynchronously
         |> Seq.map
             (fun response ->
                 match response with
-                | Some content -> Some content.Length
-                | None -> None)
-        |> Seq.zip urls
-    | _ -> Seq.empty
+                | Choice1Of2 content -> Some content.Length
+                | Choice2Of2 _ -> None)
+        |> Seq.zip urls)
+    | Choice2Of2 _ -> return Seq.empty
+    }
 
 /// Prints the sizes of pages in "URL — size" format
 let printSizes urlResTuples =
