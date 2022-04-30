@@ -32,7 +32,7 @@ let findSizes url =
             (fun response ->
                 match response with
                 | Choice1Of2 content -> Some content.Length
-                | Choice2Of2 _ -> None)
+                | Choice2Of2 ex -> None)
         |> Seq.zip urls)
     | Choice2Of2 _ -> return Seq.empty
     }
