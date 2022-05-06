@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>λ_interpreter</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Interpreter.fs" />
+    </ItemGroup>
+
+</Project>
